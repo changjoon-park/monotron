@@ -1,0 +1,16 @@
+{
+  "name": "python",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "create:venv": "python -m venv .venv",
+    "activate:venv": "source .venv/bin/activate",
+    "install:python": "pip install -r requirements.txt",
+    "start": "python run_app.py",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
