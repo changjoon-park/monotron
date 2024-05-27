@@ -1,19 +1,19 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
 
-import waitForServerReady from "@electron-python/check-server";
 import Logger from "@electron-python/logger";
+import waitForServerReady from "@electron-python/check-server";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
-// Logger for electron main process
+// Logger instance for the main process
 const logger = new Logger({
   app: app,
-  logLevel: "info",
   logPath: "appData",
+  logLevel: "info",
 });
 
 const createWindow = () => {
@@ -42,26 +42,15 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-
-app.whenReady().then(() => {
+app.on("ready", () => {
   waitForServerReady({
-    host: "127.0.0.1",
+    host: "localhost",
     port: 4040,
     path: "/",
     timeout: 100,
     retries: 30,
     logger: logger,
-  })
-    .then(() => {
-      console.log(
-        "Server is ready (port 4040). Launching the Electron window..."
-      );
-      createWindow();
-    })
-    .catch((error) => {
-      console.log(`Failed to wait for server to be ready: ${error}`);
-      app.quit();
-    });
+  });
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common

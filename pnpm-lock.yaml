@@ -8,6 +8,70 @@ importers:
 
   .: {}
 
+  apps/desktop:
+    dependencies:
+      '@electron-python/check-server':
+        specifier: workspace:^
+        version: link:../../packages/check-server
+      '@electron-python/logger':
+        specifier: workspace:^
+        version: link:../../packages/logger
+      electron-squirrel-startup:
+        specifier: ^1.0.1
+        version: 1.0.1
+    devDependencies:
+      '@electron-forge/cli':
+        specifier: ^7.4.0
+        version: 7.4.0(encoding@0.1.13)
+      '@electron-forge/maker-deb':
+        specifier: ^7.4.0
+        version: 7.4.0
+      '@electron-forge/maker-rpm':
+        specifier: ^7.4.0
+        version: 7.4.0
+      '@electron-forge/maker-squirrel':
+        specifier: ^7.4.0
+        version: 7.4.0
+      '@electron-forge/maker-zip':
+        specifier: ^7.4.0
+        version: 7.4.0
+      '@electron-forge/plugin-auto-unpack-natives':
+        specifier: ^7.4.0
+        version: 7.4.0
+      '@electron-forge/plugin-fuses':
+        specifier: ^7.4.0
+        version: 7.4.0(@electron/fuses@1.8.0)
+      '@electron-forge/plugin-vite':
+        specifier: ^7.4.0
+        version: 7.4.0
+      '@electron/fuses':
+        specifier: ^1.8.0
+        version: 1.8.0
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^5.62.0
+        version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)(typescript@4.5.5)
+      '@typescript-eslint/parser':
+        specifier: ^5.62.0
+        version: 5.62.0(eslint@8.57.0)(typescript@4.5.5)
+      electron:
+        specifier: 30.0.8
+        version: 30.0.8
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-import:
+        specifier: ^2.29.1
+        version: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.12.12)(typescript@4.5.5)
+      typescript:
+        specifier: ~4.5.4
+        version: 4.5.5
+      vite:
+        specifier: ^5.2.11
+        version: 5.2.11(@types/node@20.12.12)
+
   apps/electron:
     dependencies:
       '@electron-python/logger':
@@ -83,6 +147,12 @@ importers:
         version: 3.13.0
 
   packages/manage-python: {}
+
+  packages/subprocess-manager:
+    dependencies:
+      winston:
+        specifier: ^3.13.0
+        version: 3.13.0
 
 packages:
 

@@ -1,6 +1,6 @@
 {
-  "name": "electron",
-  "productName": "electron",
+  "name": "my-electron-app",
+  "productName": "my-electron-app",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
@@ -37,8 +37,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@electron-python/check-server": "^1.0.0",
-    "electron-squirrel-startup": "^1.0.1",
-    "@electron-python/logger": "^1.0.0"
+    "@electron-python/check-server": "workspace:^",
+    "@electron-python/logger": "workspace:^",
+    "electron-squirrel-startup": "^1.0.1"
   }
 }

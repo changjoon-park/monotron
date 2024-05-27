@@ -1,15 +1,21 @@
 {
-  "name": "@electron-python/manage-python",
+  "name": "@electron-python/subprocess-manager",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "electron",
+    "python"
+  ],
   "author": {
     "name": "Changjoon",
     "email": "sisyphus9402@gmail.com"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "winston": "^3.13.0"
+  }
 }
