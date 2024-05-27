@@ -1,12 +1,16 @@
 {
-  "name": "logger",
-  "version": "1.0.0",
+  "name": "@electron-python/logger",
+  "version": "1.0.1",
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "electron",
+    "python",
+    "logger"
+  ],
   "author": {
     "name": "Changjoon",
     "email": "sisyphus9402@gmail.com"

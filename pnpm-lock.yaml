@@ -10,15 +10,15 @@ importers:
 
   apps/electron:
     dependencies:
+      '@electron-python/logger':
+        specifier: ^1.0.0
+        version: 1.0.1
       check-server:
         specifier: workspace:^
         version: link:../../packages/check-server
       electron-squirrel-startup:
         specifier: ^1.0.1
         version: 1.0.1
-      logger:
-        specifier: workspace:^
-        version: link:../../packages/logger
     devDependencies:
       '@electron-forge/cli':
         specifier: ^7.4.0
@@ -183,6 +183,9 @@ packages:
   '@electron-forge/web-multi-logger@7.4.0':
     resolution: {integrity: sha512-XHKs37q4S8BzH1lTKhuOFO6k4R7XdrsZfox+qlp4HpiYKw8yq4rcasB0zUO5YKZ2aTJ1t79X1jxSJb5qhImdHA==}
     engines: {node: '>= 16.4.0'}
+
+  '@electron-python/logger@1.0.1':
+    resolution: {integrity: sha512-oQSQAznRyyeu6eqx+iPKHhi/jP2MvCYlNsdAXznn7azZhfbKz3omUvY/CDvssrR7w33lGpgmyZGFqLo9f0SlAA==}
 
   '@electron/asar@3.2.10':
     resolution: {integrity: sha512-mvBSwIBUeiRscrCeJE1LwctAriBj65eUDm0Pc11iE5gRwzkmsdbS7FnZ1XUWjpSeQWL1L5g12Fc/SchPM9DUOw==}
@@ -3122,6 +3125,10 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
+
+  '@electron-python/logger@1.0.1':
+    dependencies:
+      winston: 3.13.0
 
   '@electron/asar@3.2.10':
     dependencies:

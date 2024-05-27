@@ -5,8 +5,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "electron",
+    "python",
+    "monorepo",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Changjoon",
+    "email": "sisyphus9402@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {}
 }

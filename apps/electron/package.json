@@ -37,8 +37,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "check-server": "workspace:^",
+    "@electron-python/check-server": "^1.0.0",
     "electron-squirrel-startup": "^1.0.1",
-    "logger": "workspace:^"
+    "@electron-python/logger": "^1.0.0"
   }
 }
