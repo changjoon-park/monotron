@@ -2,11 +2,19 @@ import { app, BrowserWindow } from "electron";
 import path from "path";
 
 import waitForServerReady from "check-server";
+import Logger from "logger";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
 }
+
+// Logger for electron main process
+const logger = new Logger({
+  app: app,
+  logLevel: "info",
+  logPath: "appData",
+});
 
 const createWindow = () => {
   // Create the browser window.
@@ -42,6 +50,7 @@ app.whenReady().then(() => {
     path: "/",
     timeout: 100,
     retries: 30,
+    logger: logger,
   })
     .then(() => {
       console.log(

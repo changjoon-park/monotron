@@ -38,6 +38,7 @@
   "license": "MIT",
   "dependencies": {
     "check-server": "workspace:^",
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "logger": "workspace:^"
   }
 }
