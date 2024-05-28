@@ -2,18 +2,22 @@ import { app, BrowserWindow } from "electron";
 import path from "path";
 
 import Logger from "@electron-python/logger";
-import waitForServerReady from "@electron-python/check-server";
+import checkServerReady from "@electron-python/check-server";
+import PythonSubprocessManager from "@electron-python/subprocess-manager";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
-// Logger instance for the main process
 const logger = new Logger({
   app: app,
-  logPath: "appData",
-  logLevel: "info",
+});
+
+const pythonManager = new PythonSubprocessManager({
+  app: app,
+  logger: logger,
+  moduleName: "run_app",
 });
 
 const createWindow = () => {
@@ -43,12 +47,15 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", () => {
-  waitForServerReady({
+  createWindow();
+
+  if (process.env.NODE_ENV !== "development") {
+    pythonManager.start();
+  }
+
+  checkServerReady({
     host: "localhost",
     port: 4040,
-    path: "/",
-    timeout: 100,
-    retries: 30,
     logger: logger,
   });
 });

@@ -8,7 +8,7 @@ const logLevel = {
   verbose: "verbose",
 };
 
-function waitForServerReady({
+async function checkServerReady({
   host,
   port,
   path = "/",
@@ -18,31 +18,30 @@ function waitForServerReady({
 }) {
   const url = `http://${host}:${port}${path}`;
 
-  return new Promise((resolve, reject) => {
-    const attemptConnection = async (retryCount) => {
-      log(
-        logger,
-        `Attempting to connect to ${url}. Retries left: ${retryCount}`,
-        logLevel.verbose
-      );
+  const attemptConnection = async (retryCount) => {
+    log(
+      logger,
+      `Attempting to connect to ${url}. Retries left: ${retryCount}`,
+      logLevel.verbose
+    );
 
-      try {
-        const response = await httpGet(url);
-        const message = await handleResponse(response, logger, logLevel);
-        resolve(message);
-      } catch (error) {
-        log(logger, error.message, logLevel.warn);
-        if (retryCount > 0) {
-          setTimeout(() => attemptConnection(retryCount - 1), timeout);
-        } else {
-          log(logger, "Server did not become ready in time.", logLevel.error);
-          reject(new Error("Server did not become ready in time."));
-        }
+    try {
+      const response = await httpGet(url);
+      const message = await handleResponse(response, logger, logLevel);
+      return message;
+    } catch (error) {
+      log(logger, error.message, logLevel.warn);
+      if (retryCount > 0) {
+        await new Promise((resolve) => setTimeout(resolve, timeout));
+        return attemptConnection(retryCount - 1);
+      } else {
+        log(logger, "Server did not become ready in time.", logLevel.error);
+        throw new Error("Server did not become ready in time.");
       }
-    };
+    }
+  };
 
-    attemptConnection(retries);
-  });
+  return attemptConnection(retries);
 }
 
 function httpGet(url) {
@@ -117,4 +116,4 @@ function log(logger, message, level) {
   }
 }
 
-module.exports = waitForServerReady;
+module.exports = checkServerReady;

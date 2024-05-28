@@ -10,12 +10,6 @@ importers:
 
   apps/desktop:
     dependencies:
-      '@electron-python/check-server':
-        specifier: workspace:^
-        version: link:../../packages/check-server
-      '@electron-python/logger':
-        specifier: workspace:^
-        version: link:../../packages/logger
       electron-squirrel-startup:
         specifier: ^1.0.1
         version: 1.0.1
@@ -147,6 +141,12 @@ importers:
         version: 3.13.0
 
   packages/manage-python: {}
+
+  packages/manage-subprocess:
+    dependencies:
+      winston:
+        specifier: ^3.13.0
+        version: 3.13.0
 
   packages/subprocess-manager:
     dependencies:

@@ -6,6 +6,7 @@
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
+    "start:dev": "NODE_ENV=development electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -37,8 +38,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@electron-python/check-server": "workspace:^",
-    "@electron-python/logger": "workspace:^",
+    "@electron-python/check-server": "^1.0.0",
+    "@electron-python/logger": "^1.0.1",
+    "@electron-python/subprocess-manager": "^1.0.0",
     "electron-squirrel-startup": "^1.0.1"
   }
 }
