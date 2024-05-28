@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "create:venv": "python -m venv .venv",
-    "activate:venv": "source .venv/bin/activate",
     "install:python": "pip install -r requirements.txt",
     "bundle:python": "pyinstaller run_app.py -y",
     "start:dev": "python run_app.py",

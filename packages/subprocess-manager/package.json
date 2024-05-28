@@ -21,6 +21,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@electron-python/logger": "^1.1.0"
+    "@electron-python/logger": "^1.2.4"
   }
 }
