@@ -98,31 +98,4 @@ class Logger {
   }
 }
 
-function log(logger, message, level) {
-  if (logger) {
-    switch (level) {
-      case "debug":
-        logger.debug(message);
-        break;
-      case "info":
-        logger.info(message);
-        break;
-      case "warn":
-        logger.warn(message);
-        break;
-      case "error":
-        logger.error(message);
-        break;
-      case "verbose":
-        logger.verbose(message);
-        break;
-      default:
-        console.log(message);
-        break;
-    }
-  } else {
-    console.log(message);
-  }
-}
-
 module.exports = Logger;

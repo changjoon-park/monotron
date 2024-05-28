@@ -2,7 +2,7 @@ const { spawn } = require("child_process");
 const path = require("path");
 const http = require("http");
 
-const { Logger } = require("@electron-python/logger");
+const Logger = require("@electron-python/logger");
 
 class PythonSubprocess {
   constructor({
@@ -146,14 +146,12 @@ class PythonSubprocess {
         const message = await this.handleResponse(response);
         return message;
       } catch (error) {
-        const message = `Fail to connect to ${url}: ${error.message}`;
-        this.logger.warn(message);
+        this.logger.warn(`Fail to connect to ${url}`);
         if (retryCount > 0) {
           await new Promise((resolve) => setTimeout(resolve, timeout));
           return attemptConnection(retryCount - 1);
         } else {
-          const message = "Server did not become ready in time.";
-          this.logger.error(message);
+          this.logger.error("Server did not become ready in time.");
           throw new Error(message);
         }
       }

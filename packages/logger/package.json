@@ -1,6 +1,6 @@
 {
   "name": "@electron-python/logger",
-  "version": "1.2.0",
+  "version": "1.2.4",
   "description": "",
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
