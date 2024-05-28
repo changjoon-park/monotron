@@ -27,49 +27,42 @@
   });
 </script>
 
-<main>
-  <div>
+<main
+  class="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-white"
+>
+  <div class="flex justify-center space-x-20 mb-8">
     <a href="https://www.electronjs.org/" target="_blank" rel="noreferrer">
-      <img src={electronLogo} class="logo" alt="Electron Logo" />
+      <img
+        src={electronLogo}
+        class="h-24 transition-transform duration-300 hover:drop-shadow-[0_0_2em_#646cffaa]"
+        alt="Electron Logo"
+      />
     </a>
     <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noreferrer">
-      <img src={fastapiLogo} class="logo fastapi" alt="FastAPI Logo" />
+      <img
+        src={fastapiLogo}
+        class="h-24 transition-transform duration-300 hover:drop-shadow-[0_0_2em_#43a6c7aa]"
+        alt="FastAPI Logo"
+      />
     </a>
     <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
+      <img
+        src={svelteLogo}
+        class="h-24 transition-transform duration-300 hover:drop-shadow-[0_0_2em_#ff3e00aa]"
+        alt="Svelte Logo"
+      />
     </a>
   </div>
-  <h1>Electron + FastAPI + Svelte</h1>
+  <h1 class="text-5xl font-bold my-4">Electron + FastAPI + Svelte</h1>
 
-  <div class="card">
+  <div class="card bg-gray-700 p-4 my-4 rounded-lg shadow-lg">
     <Counter />
   </div>
 
-  <p>
+  <p class="mt-4 text-lg">
     This is a template for building desktop applications using Electron,
     FastAPI, and Svelte.
   </p>
 
-  <p class="read-the-docs">{fetchedData}</p>
+  <p class="read-the-docs mt-2 text-gray-400">{fetchedData}</p>
 </main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.fastapi:hover {
-    filter: drop-shadow(0 0 2em #43a6c7aa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
