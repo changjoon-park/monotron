@@ -22,6 +22,8 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/plugin-vite": "^7.4.0",
     "@electron/fuses": "^1.8.0",
+    "@skeletonlabs/skeleton": "^2.10.0",
+    "@skeletonlabs/tw-plugin": "^0.4.0",
     "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "autoprefixer": "^10.4.19",
     "electron": "30.0.8",

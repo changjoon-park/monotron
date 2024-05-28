@@ -22,7 +22,7 @@ export default defineConfig((env) => {
       svelte({
         preprocess: vitePreprocess(),
       }),
-      // purgeCss(),
+      purgeCss(),
       pluginExposeRenderer(name),
     ],
     css: {
