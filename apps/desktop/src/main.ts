@@ -18,7 +18,6 @@ const logger = new Logger({
 
 const pythonManager = new PythonSubprocess({
   app: app,
-  logger: logger,
   moduleName: "run_app",
 });
 

@@ -1,5 +1,6 @@
 const { spawn } = require("child_process");
 const path = require("path");
+const Logger = require("./logger");
 
 class PythonSubprocess {
   constructor({
@@ -8,9 +9,14 @@ class PythonSubprocess {
     moduleName = "run_app", // The name of your main Python module (or executable name)
   }) {
     this.app = app;
-    this.logger = logger;
     this.subProcess = null;
     this.moduleName = moduleName;
+
+    if (!logger) {
+      this.logger = new Logger({ app });
+    } else {
+      this.logger = logger;
+    }
   }
 
   getPythonExePath() {
@@ -39,7 +45,15 @@ class PythonSubprocess {
     return pythonExePath;
   }
 
-  start() {
+  start(callback) {
+    if (process.env.NODE_ENV === "development") {
+      this.logger.info("Skipping Python subprocess start in development mode.");
+      if (callback) {
+        callback();
+      }
+      return;
+    }
+
     const pythonExePath = this.getPythonExePath();
     const args = [];
     this.logger.info(`Python executable path: ${pythonExePath}`);
@@ -63,6 +77,10 @@ class PythonSubprocess {
         this.logger.info(`Python subprocess exited with code ${code}`);
         this.subProcess = null;
       });
+
+      if (callback) {
+        callback();
+      }
     } catch (error) {
       this.logger.error(`Error starting Python subprocess: ${error}`);
       this.subProcess = null;

@@ -116,5 +116,3 @@ function log(logger, message, level) {
     console.log(message);
   }
 }
-
-module.exports = checkServerReady;
