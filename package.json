@@ -5,9 +5,9 @@
   "scripts": {
     "venv": "pnpm --filter='python' create:venv && echo 'Run `source ./apps/python/.venv/bin/activate` to activate the virtual environment.'",
     "install:all": "pnpm install && pnpm --filter='my-electron*' install:all && pnpm --filter='python' install:python",
-    "start:server": "pnpm --filter='python' start:dev",
-    "start:electron": "pnpm --filter='my-electron*' start:dev",
-    "test": "concurrently -k \"npm run start:server\" \"npm run start:electron\"",
+    "start:python": "pnpm --filter='python' start",
+    "start:electron": "pnpm --filter='my-electron*' start",
+    "start": "concurrently -k \"npm run start:python\" \"npm run start:electron\"",
     "build": "pnpm --filter='python' bundle:python && pnpm --filter='my-electron*' package"
   },
   "keywords": [
