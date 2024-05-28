@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
 
-import Logger from "@electron-python/logger";
+// import Logger from "@electron-python/logger";
 import {
   PythonSubprocess,
   checkServerReady,
@@ -12,9 +12,9 @@ if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
-const logger = new Logger({
-  app: app,
-});
+// const logger = new Logger({
+//   app: app,
+// });
 
 const pythonManager = new PythonSubprocess({
   app: app,
@@ -50,14 +50,12 @@ const createWindow = () => {
 app.on("ready", () => {
   createWindow();
 
-  if (process.env.NODE_ENV !== "development") {
-    pythonManager.start();
-  }
+  pythonManager.start();
 
   checkServerReady({
     host: "localhost",
     port: 4040,
-    logger: logger,
+    // logger: logger,
   });
 });
 

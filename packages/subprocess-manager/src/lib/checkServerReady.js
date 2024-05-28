@@ -1,12 +1,5 @@
 const http = require("http");
-
-const logLevel = {
-  debug: "debug",
-  info: "info",
-  warn: "warn",
-  error: "error",
-  verbose: "verbose",
-};
+const { log, logLevel } = require("../utils/logger");
 
 async function checkServerReady({
   host,
@@ -87,32 +80,5 @@ async function handleResponse(response, logger, logLevel) {
     const message = `Server not ready. Status code: ${response.statusCode}`;
     log(logger, message, logLevel.error);
     throw new Error(message);
-  }
-}
-
-function log(logger, message, level) {
-  if (logger) {
-    switch (level) {
-      case "debug":
-        logger.debug(message);
-        break;
-      case "info":
-        logger.info(message);
-        break;
-      case "warn":
-        logger.warn(message);
-        break;
-      case "error":
-        logger.error(message);
-        break;
-      case "verbose":
-        logger.verbose(message);
-        break;
-      default:
-        console.log(message);
-        break;
-    }
-  } else {
-    console.log(message);
   }
 }
