@@ -1,6 +1,18 @@
 import { defineConfig } from "vite";
 import { pluginExposeRenderer } from "./vite.base.config.mjs";
-import { svelte, vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import { sveltekit } from "@sveltejs/kit/vite";
+
+import adapter from "@sveltejs/adapter-auto";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+
+// Define your SvelteKit config
+const svelteConfig = {
+  extensions: [".svelte"],
+  preprocess: [vitePreprocess()],
+  kit: {
+    adapter: adapter(),
+  },
+};
 
 // https://vitejs.dev/config
 export default defineConfig((env) => {
@@ -17,12 +29,7 @@ export default defineConfig((env) => {
     build: {
       outDir: `.vite/renderer/${name}`,
     },
-    plugins: [
-      svelte({
-        preprocess: vitePreprocess(),
-      }),
-      pluginExposeRenderer(name),
-    ],
+    plugins: [sveltekit(svelteConfig), pluginExposeRenderer(name)],
     resolve: {
       preserveSymlinks: true,
     },

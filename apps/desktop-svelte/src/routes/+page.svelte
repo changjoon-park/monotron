@@ -1,9 +1,9 @@
 <script>
   import { onMount } from "svelte";
-  import svelteLogo from "./assets/svelte.svg";
-  import fastapiLogo from "./assets/fastapi.svg";
-  import electronLogo from "./assets/electron.svg";
-  import Counter from "./lib/Counter.svelte";
+  import svelteLogo from "../assets/svelte.svg";
+  import fastapiLogo from "../assets/fastapi.svg";
+  import electronLogo from "../assets/electron.svg";
+  import Counter from "../lib/Counter.svelte";
 
   let fetchedData = "";
 
