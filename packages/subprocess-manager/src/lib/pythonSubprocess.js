@@ -1,5 +1,6 @@
 const { spawn } = require("child_process");
 const path = require("path");
+const http = require("http");
 
 const { Logger } = require("@electron-python/logger");
 
@@ -124,6 +125,86 @@ class PythonSubprocess {
     }
 
     this.subProcess = null; // Clear the subprocess reference
+  }
+
+  async checkServerReady({
+    host,
+    port,
+    path = "/",
+    timeout = 100,
+    retries = 30,
+  }) {
+    const url = `http://${host}:${port}${path}`;
+
+    const attemptConnection = async (retryCount) => {
+      this.logger.verbose(
+        `Attempting to connect to ${url}. Retries left: ${retryCount}`
+      );
+
+      try {
+        const response = await this.httpGet(url);
+        const message = await this.handleResponse(response);
+        return message;
+      } catch (error) {
+        const message = `Fail to connect to ${url}: ${error.message}`;
+        this.logger.warn(message);
+        if (retryCount > 0) {
+          await new Promise((resolve) => setTimeout(resolve, timeout));
+          return attemptConnection(retryCount - 1);
+        } else {
+          const message = "Server did not become ready in time.";
+          this.logger.error(message);
+          throw new Error(message);
+        }
+      }
+    };
+
+    return attemptConnection(retries);
+  }
+
+  httpGet(url) {
+    return new Promise((resolve, reject) => {
+      http
+        .get(url, (res) => {
+          let data = "";
+
+          res.on("data", (chunk) => {
+            data += chunk;
+          });
+
+          res.on("end", () => {
+            resolve({ statusCode: res.statusCode, data });
+          });
+
+          res.on("error", (err) => {
+            reject(new Error(`HTTP request error: ${err.message}`));
+          });
+        })
+        .on("error", (err) => {
+          reject(new Error(`HTTP request error: ${err.message}`));
+        });
+    });
+  }
+
+  async handleResponse(response) {
+    if (response.statusCode === 200) {
+      try {
+        const jsonData = JSON.parse(response.data);
+        const message = `Server response: ${
+          jsonData.message || "No message found"
+        }`;
+        this.logger.info(message);
+        return message;
+      } catch (error) {
+        const message = `Error parsing JSON response: ${error.message}`;
+        this.logger.error(message);
+        throw new Error(message);
+      }
+    } else {
+      const message = `Server not ready. Status code: ${response.statusCode}`;
+      this.logger.error(message);
+      throw new Error(message);
+    }
   }
 }
 

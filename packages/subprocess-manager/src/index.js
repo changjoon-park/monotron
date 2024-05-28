@@ -1,7 +1,7 @@
-const checkServerReady = require("./lib/checkServerReady");
 const PythonSubprocess = require("./lib/pythonSubprocess");
+const startPythonServer = require("./lib/startPythonServer");
 
 module.exports = {
-  checkServerReady,
   PythonSubprocess,
+  startPythonServer,
 };

@@ -1,6 +1,6 @@
 {
   "name": "@electron-python/subprocess-manager",
-  "version": "1.2.3",
+  "version": "1.4.1",
   "description": "",
   "main": "./src/index.js",
   "scripts": {

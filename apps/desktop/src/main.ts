@@ -4,7 +4,7 @@ import path from "path";
 // import Logger from "@electron-python/logger";
 import {
   PythonSubprocess,
-  checkServerReady,
+  startPythonServer,
 } from "@electron-python/subprocess-manager";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -40,18 +40,12 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 };
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on("ready", () => {
   createWindow();
 
-  pythonSubprocess.start();
-
-  checkServerReady({
+  startPythonServer(pythonSubprocess, {
     host: "localhost",
     port: 4040,
-    // logger: logger,
   });
 });
 
