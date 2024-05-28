@@ -10,15 +10,12 @@ importers:
 
   apps/desktop:
     dependencies:
-      '@electron-python/check-server':
-        specifier: ^1.0.0
-        version: 1.0.0
       '@electron-python/logger':
         specifier: ^1.0.1
         version: 1.0.1
       '@electron-python/subprocess-manager':
-        specifier: ^1.0.0
-        version: 1.0.1
+        specifier: ^1.1.0
+        version: 1.1.0
       electron-squirrel-startup:
         specifier: ^1.0.1
         version: 1.0.1
@@ -259,14 +256,11 @@ packages:
     resolution: {integrity: sha512-XHKs37q4S8BzH1lTKhuOFO6k4R7XdrsZfox+qlp4HpiYKw8yq4rcasB0zUO5YKZ2aTJ1t79X1jxSJb5qhImdHA==}
     engines: {node: '>= 16.4.0'}
 
-  '@electron-python/check-server@1.0.0':
-    resolution: {integrity: sha512-dfkRd641B2ILmepgDrwj6BMdEmNy4SExX5fL8QjDIcqczYlvdF7JFJ17LhjV8kwfNo46FvUllPhp4QIVJ0SWZw==}
-
   '@electron-python/logger@1.0.1':
     resolution: {integrity: sha512-oQSQAznRyyeu6eqx+iPKHhi/jP2MvCYlNsdAXznn7azZhfbKz3omUvY/CDvssrR7w33lGpgmyZGFqLo9f0SlAA==}
 
-  '@electron-python/subprocess-manager@1.0.1':
-    resolution: {integrity: sha512-v+SLLOPvJrXINV1+OqWj0KHgaiA0ShspORoaH5zGkMJ6/z6TnUCdonI7Dl3s7y4sybF4XxryVx3qTfdccyV9GA==}
+  '@electron-python/subprocess-manager@1.1.0':
+    resolution: {integrity: sha512-Uy3GCguWUQ2OF8vO2VLvDGM4b1g6O/MeP4Q12tahYza2Fu9viQ9OohLlVdIvkkAzNTFQ5nCMiOJS1TYJlFHQYA==}
 
   '@electron/asar@3.2.10':
     resolution: {integrity: sha512-mvBSwIBUeiRscrCeJE1LwctAriBj65eUDm0Pc11iE5gRwzkmsdbS7FnZ1XUWjpSeQWL1L5g12Fc/SchPM9DUOw==}
@@ -3207,15 +3201,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@electron-python/check-server@1.0.0': {}
-
   '@electron-python/logger@1.0.1':
     dependencies:
       winston: 3.13.0
 
-  '@electron-python/subprocess-manager@1.0.1':
-    dependencies:
-      winston: 3.13.0
+  '@electron-python/subprocess-manager@1.1.0': {}
 
   '@electron/asar@3.2.10':
     dependencies:

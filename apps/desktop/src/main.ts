@@ -2,8 +2,10 @@ import { app, BrowserWindow } from "electron";
 import path from "path";
 
 import Logger from "@electron-python/logger";
-import checkServerReady from "@electron-python/check-server";
-import PythonSubprocess from "@electron-python/subprocess-manager";
+import {
+  PythonSubprocess,
+  checkServerReady,
+} from "@electron-python/subprocess-manager";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
