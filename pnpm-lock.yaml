@@ -14,8 +14,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       '@electron-python/subprocess-manager':
-        specifier: ^1.4.1
-        version: 1.4.1
+        specifier: ^1.5.1
+        version: 1.5.1
       electron-squirrel-startup:
         specifier: ^1.0.1
         version: 1.0.1
@@ -269,8 +269,8 @@ packages:
   '@electron-python/logger@1.1.1':
     resolution: {integrity: sha512-bG7ZfMy3QEbLAP5sDCtt0OEvevJgAnnLzxnRPQawLQliA/aCElTZXD68DZ4/qx39lrECv6uxrdsMrhatThr35w==}
 
-  '@electron-python/subprocess-manager@1.4.1':
-    resolution: {integrity: sha512-ipSPJti90+MZEb9sKoCFuF95dmE8krnyRtJhWgmIAd1xjWUhdAO+CZVwq4ikAlZ3+F7USJ2DVNM7tB63unSsyA==}
+  '@electron-python/subprocess-manager@1.5.1':
+    resolution: {integrity: sha512-6cYkOBAbDBLCNJkyLLjUEWB/4XufhFwogzJvZ+e/vg0nIN5hJ+WNSVNgW5JPp7cCsWq6bXekbqcYyuTWSawIzg==}
 
   '@electron/asar@3.2.10':
     resolution: {integrity: sha512-mvBSwIBUeiRscrCeJE1LwctAriBj65eUDm0Pc11iE5gRwzkmsdbS7FnZ1XUWjpSeQWL1L5g12Fc/SchPM9DUOw==}
@@ -3223,7 +3223,7 @@ snapshots:
     dependencies:
       winston: 3.13.0
 
-  '@electron-python/subprocess-manager@1.4.1':
+  '@electron-python/subprocess-manager@1.5.1':
     dependencies:
       '@electron-python/logger': 1.1.1
 

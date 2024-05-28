@@ -125,8 +125,4 @@ function log(logger, message, level) {
   }
 }
 
-module.exports = {
-  Logger,
-  logLevels,
-  log,
-};
+module.exports = Logger;
