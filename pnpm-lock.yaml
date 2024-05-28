@@ -76,83 +76,9 @@ importers:
         specifier: ^5.2.11
         version: 5.2.11(@types/node@20.12.12)
 
-  apps/electron:
-    dependencies:
-      '@electron-python/logger':
-        specifier: ^1.0.0
-        version: 1.0.1
-      check-server:
-        specifier: workspace:^
-        version: link:../../packages/check-server
-      electron-squirrel-startup:
-        specifier: ^1.0.1
-        version: 1.0.1
-    devDependencies:
-      '@electron-forge/cli':
-        specifier: ^7.4.0
-        version: 7.4.0(encoding@0.1.13)
-      '@electron-forge/maker-deb':
-        specifier: ^7.4.0
-        version: 7.4.0
-      '@electron-forge/maker-rpm':
-        specifier: ^7.4.0
-        version: 7.4.0
-      '@electron-forge/maker-squirrel':
-        specifier: ^7.4.0
-        version: 7.4.0
-      '@electron-forge/maker-zip':
-        specifier: ^7.4.0
-        version: 7.4.0
-      '@electron-forge/plugin-auto-unpack-natives':
-        specifier: ^7.4.0
-        version: 7.4.0
-      '@electron-forge/plugin-fuses':
-        specifier: ^7.4.0
-        version: 7.4.0(@electron/fuses@1.8.0)
-      '@electron-forge/plugin-vite':
-        specifier: ^7.4.0
-        version: 7.4.0
-      '@electron/fuses':
-        specifier: ^1.8.0
-        version: 1.8.0
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^5.62.0
-        version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)(typescript@4.5.5)
-      '@typescript-eslint/parser':
-        specifier: ^5.62.0
-        version: 5.62.0(eslint@8.57.0)(typescript@4.5.5)
-      electron:
-        specifier: 30.0.8
-        version: 30.0.8
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      eslint-plugin-import:
-        specifier: ^2.29.1
-        version: 2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@4.5.5))(eslint@8.57.0)
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.12.12)(typescript@4.5.5)
-      typescript:
-        specifier: ~4.5.4
-        version: 4.5.5
-      vite:
-        specifier: ^5.2.11
-        version: 5.2.11(@types/node@20.12.12)
-
   apps/python: {}
 
-  packages/check-server: {}
-
   packages/logger:
-    dependencies:
-      winston:
-        specifier: ^3.13.0
-        version: 3.13.0
-
-  packages/manage-python: {}
-
-  packages/manage-subprocess:
     dependencies:
       winston:
         specifier: ^3.13.0
@@ -267,9 +193,6 @@ packages:
   '@electron-forge/web-multi-logger@7.4.0':
     resolution: {integrity: sha512-XHKs37q4S8BzH1lTKhuOFO6k4R7XdrsZfox+qlp4HpiYKw8yq4rcasB0zUO5YKZ2aTJ1t79X1jxSJb5qhImdHA==}
     engines: {node: '>= 16.4.0'}
-
-  '@electron-python/logger@1.0.1':
-    resolution: {integrity: sha512-oQSQAznRyyeu6eqx+iPKHhi/jP2MvCYlNsdAXznn7azZhfbKz3omUvY/CDvssrR7w33lGpgmyZGFqLo9f0SlAA==}
 
   '@electron-python/logger@1.1.1':
     resolution: {integrity: sha512-bG7ZfMy3QEbLAP5sDCtt0OEvevJgAnnLzxnRPQawLQliA/aCElTZXD68DZ4/qx39lrECv6uxrdsMrhatThr35w==}
@@ -3307,10 +3230,6 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
-
-  '@electron-python/logger@1.0.1':
-    dependencies:
-      winston: 3.13.0
 
   '@electron-python/logger@1.1.1':
     dependencies:

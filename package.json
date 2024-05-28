@@ -3,12 +3,12 @@
   "version": "1.1.0",
   "description": "",
   "scripts": {
-    "venv": "pnpm --filter='python' create:venv",
-    "build": "pnpm --filter='python' install:python && pnpm --filter='python' bundle:python",
+    "venv": "pnpm --filter='python' create:venv && echo 'Run `source ./apps/python/.venv/bin/activate` to activate the virtual environment.'",
+    "install:all": "pnpm install && pnpm --filter='my-electron*' install:all && pnpm --filter='python' install:python",
     "start:server": "pnpm --filter='python' start:dev",
     "start:electron": "pnpm --filter='my-electron*' start:dev",
     "test": "concurrently -k \"npm run start:server\" \"npm run start:electron\"",
-    "package": "pnpm --filter='my-electron*' package"
+    "build": "pnpm --filter='python' bundle:python && pnpm --filter='my-electron*' package"
   },
   "keywords": [
     "electron",
