@@ -1,6 +1,6 @@
 {
-  "name": "my-electron-app",
-  "productName": "my-electron-app",
+  "name": "my-electron-app-ts",
+  "productName": "my-electron-app-ts",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
@@ -10,7 +10,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "eslint --ext .ts,.tsx ."
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.4.0",
@@ -22,8 +22,14 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/plugin-vite": "^7.4.0",
     "@electron/fuses": "^1.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "electron": "30.0.8",
-    "vite": "^5.2.12"
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.5.4",
+    "vite": "^5.2.11"
   },
   "keywords": [
     "electron",
