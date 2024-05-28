@@ -11,11 +11,11 @@ importers:
   apps/desktop:
     dependencies:
       '@electron-python/logger':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.1.1
+        version: 1.1.1
       '@electron-python/subprocess-manager':
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       electron-squirrel-startup:
         specifier: ^1.0.1
         version: 1.0.1
@@ -156,9 +156,9 @@ importers:
 
   packages/subprocess-manager:
     dependencies:
-      winston:
-        specifier: ^3.13.0
-        version: 3.13.0
+      '@electron-python/logger':
+        specifier: ^1.1.0
+        version: 1.1.0
 
 packages:
 
@@ -263,8 +263,14 @@ packages:
   '@electron-python/logger@1.0.1':
     resolution: {integrity: sha512-oQSQAznRyyeu6eqx+iPKHhi/jP2MvCYlNsdAXznn7azZhfbKz3omUvY/CDvssrR7w33lGpgmyZGFqLo9f0SlAA==}
 
-  '@electron-python/subprocess-manager@1.2.1':
-    resolution: {integrity: sha512-a3Ka24AbqZlaXlMDjVxBBTV9ICOszBripyOWQFwsYFFIGSL/8ANHFqeILQ5OvbbpMQo1GWQW8/1uMYKRbd6u7Q==}
+  '@electron-python/logger@1.1.0':
+    resolution: {integrity: sha512-FyomCrQyccNJ5zgXOJFk7ZP3YCTWIisfhTeC2osu3Z8G/CVZUuB/a25xnXvALRR+uCAnKw6LI6HWSuwIgUKL+g==}
+
+  '@electron-python/logger@1.1.1':
+    resolution: {integrity: sha512-bG7ZfMy3QEbLAP5sDCtt0OEvevJgAnnLzxnRPQawLQliA/aCElTZXD68DZ4/qx39lrECv6uxrdsMrhatThr35w==}
+
+  '@electron-python/subprocess-manager@1.2.3':
+    resolution: {integrity: sha512-F+UvTVLI3yK9CWEnhAtnVSrZfV9abE+uvgU5bLFa1vd8NP2L5MYwBVZfb7D5MgtlTUVGi8LvpF/EZ866Jo7f+g==}
 
   '@electron/asar@3.2.10':
     resolution: {integrity: sha512-mvBSwIBUeiRscrCeJE1LwctAriBj65eUDm0Pc11iE5gRwzkmsdbS7FnZ1XUWjpSeQWL1L5g12Fc/SchPM9DUOw==}
@@ -3209,9 +3215,17 @@ snapshots:
     dependencies:
       winston: 3.13.0
 
-  '@electron-python/subprocess-manager@1.2.1':
+  '@electron-python/logger@1.1.0':
     dependencies:
       winston: 3.13.0
+
+  '@electron-python/logger@1.1.1':
+    dependencies:
+      winston: 3.13.0
+
+  '@electron-python/subprocess-manager@1.2.3':
+    dependencies:
+      '@electron-python/logger': 1.1.1
 
   '@electron/asar@3.2.10':
     dependencies:

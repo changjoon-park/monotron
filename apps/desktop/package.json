@@ -38,8 +38,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@electron-python/logger": "^1.0.1",
-    "@electron-python/subprocess-manager": "^1.2.1",
+    "@electron-python/logger": "^1.1.1",
+    "@electron-python/subprocess-manager": "^1.2.3",
     "electron-squirrel-startup": "^1.0.1"
   }
 }

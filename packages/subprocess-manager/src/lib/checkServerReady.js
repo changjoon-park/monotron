@@ -1,5 +1,6 @@
 const http = require("http");
-const { log, logLevel } = require("../utils/logger");
+
+const { log, logLevel } = require("@electron-python/logger");
 
 async function checkServerReady({
   host,
@@ -82,3 +83,5 @@ async function handleResponse(response, logger, logLevel) {
     throw new Error(message);
   }
 }
+
+module.exports = checkServerReady;

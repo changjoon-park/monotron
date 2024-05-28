@@ -12,11 +12,7 @@ if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
-// const logger = new Logger({
-//   app: app,
-// });
-
-const pythonManager = new PythonSubprocess({
+const pythonSubprocess = new PythonSubprocess({
   app: app,
   moduleName: "run_app",
 });
@@ -50,7 +46,7 @@ const createWindow = () => {
 app.on("ready", () => {
   createWindow();
 
-  pythonManager.start();
+  pythonSubprocess.start();
 
   checkServerReady({
     host: "localhost",

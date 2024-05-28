@@ -1,6 +1,29 @@
 const { createLogger, format, transports } = require("winston");
 const path = require("path");
 
+const logLevels = {
+  debug: "debug",
+  info: "info",
+  warn: "warn",
+  error: "error",
+  verbose: "verbose",
+};
+
+const validLogPaths = [
+  "appData",
+  "userData",
+  "temp",
+  "exe",
+  "desktop",
+  "documents",
+  "downloads",
+  "music",
+  "pictures",
+  "videos",
+  "module",
+  "recent",
+];
+
 class Logger {
   constructor({
     app, // Electron app instance
@@ -10,21 +33,6 @@ class Logger {
     logMaxSize = 1024 * 1024 * 5, // 5MB
     logMaxFiles = 5,
   }) {
-    const validLogPaths = [
-      "appData",
-      "userData",
-      "temp",
-      "exe",
-      "desktop",
-      "documents",
-      "downloads",
-      "music",
-      "pictures",
-      "videos",
-      "module",
-      "recent",
-    ];
-
     if (!validLogPaths.includes(logPath)) {
       console.warn(
         `Invalid log path '${logPath}'. Defaulting to 'appData'. Valid paths are: ${validLogPaths.join(
@@ -32,6 +40,15 @@ class Logger {
         )}`
       );
       logPath = "appData";
+    }
+
+    if (!Object.values(logLevels).includes(logLevel)) {
+      console.warn(
+        `Invalid log level '${logLevel}'. Defaulting to 'info'. Valid levels are: ${logLevels.join(
+          ", "
+        )}`
+      );
+      logLevel = "info";
     }
 
     const productName = app.name;
@@ -81,4 +98,35 @@ class Logger {
   }
 }
 
-module.exports = Logger;
+function log(logger, message, level) {
+  if (logger) {
+    switch (level) {
+      case "debug":
+        logger.debug(message);
+        break;
+      case "info":
+        logger.info(message);
+        break;
+      case "warn":
+        logger.warn(message);
+        break;
+      case "error":
+        logger.error(message);
+        break;
+      case "verbose":
+        logger.verbose(message);
+        break;
+      default:
+        console.log(message);
+        break;
+    }
+  } else {
+    console.log(message);
+  }
+}
+
+module.exports = {
+  Logger,
+  logLevels,
+  log,
+};

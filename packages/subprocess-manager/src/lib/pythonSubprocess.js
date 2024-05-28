@@ -1,6 +1,7 @@
 const { spawn } = require("child_process");
 const path = require("path");
-const { log, logLevel, Logger } = require("../utils/logger");
+
+const { Logger } = require("@electron-python/logger");
 
 class PythonSubprocess {
   constructor({
@@ -13,7 +14,12 @@ class PythonSubprocess {
     this.moduleName = moduleName;
 
     if (!logger) {
-      this.logger = new Logger({ app });
+      this.logger = new Logger({
+        app: this.app,
+        logPath: "appData",
+        logLevel: "info",
+        logFileName: "app.log",
+      });
     } else {
       this.logger = logger;
     }
@@ -47,11 +53,7 @@ class PythonSubprocess {
 
   start(callback) {
     if (process.env.NODE_ENV === "development") {
-      log(
-        logger,
-        "Skipping Python subprocess start in development mode.",
-        logLevel.info
-      );
+      this.logger.info("Skipping Python subprocess start in development mode.");
       if (callback) {
         callback();
       }
@@ -60,31 +62,25 @@ class PythonSubprocess {
 
     const pythonExePath = this.getPythonExePath();
     const args = [];
-    log(logger, `Python executable path: ${pythonExePath}`, logLevel.info);
-    log(logger, "Starting Python subprocess...", logLevel.info);
+    this.logger.info(`Python executable path: ${pythonExePath}`);
+    this.logger.info("Starting Python subprocess...");
 
     try {
       this.subProcess = spawn(pythonExePath, args);
-      log(
-        logger,
-        `Python subprocess started with PID: ${this.subProcess.pid}`,
-        logLevel.info
-      );
+      this.logger.info(
+        `Python subprocess started with PID: ${this.subProcess.pid}`
+      ); // TODO: Check if this.subProcess.pid is always available
 
       this.subProcess.stdout.on("data", (data) => {
-        log(logger, `stdout: ${data}`, logLevel.info);
+        this.logger.info(`stdout: ${data}`);
       });
 
       this.subProcess.stderr.on("data", (data) => {
-        log(logger, `stderr: ${data}`, logLevel.error);
+        this.logger.error(`stderr: ${data}`);
       });
 
       this.subProcess.on("close", (code) => {
-        log(
-          logger,
-          `Python subprocess exited with code ${code}`,
-          logLevel.info
-        );
+        this.logger.info(`Python subprocess exited with code ${code}`);
         this.subProcess = null;
       });
 
@@ -92,53 +88,39 @@ class PythonSubprocess {
         callback();
       }
     } catch (error) {
-      log(logger, `Error starting Python subprocess: ${error}`, logLevel.error);
+      this.logger.error(`Error starting Python subprocess: ${error}`);
       this.subProcess = null;
     }
   }
 
   stop() {
     if (!this.subProcess) {
-      log(logger, "No subprocess to stop.", logLevel.info);
+      this.logger.info("No subprocess to stop.");
       return;
     }
 
     const pid = this.subProcess.pid;
     if (!pid) {
-      log(
-        logger,
-        "Subprocess has no PID, may have already stopped.",
-        logLevel.info
-      );
+      this.logger.info("Subprocess has no PID, may have already stopped.");
       return;
     }
 
     try {
       // Attempt graceful shutdown
       process.kill(pid, "SIGTERM");
-      log(
-        logger,
-        `Sent SIGTERM to Python subprocess with PID: ${pid}`,
-        logLevel.info
-      );
+      this.logger.info(`Sent SIGTERM to Python subprocess with PID: ${pid}`);
 
       // Set a timeout to forcefully terminate the process if it doesn't exit
       setTimeout(() => {
         if (this.subProcess && !this.subProcess.killed) {
           process.kill(pid, "SIGKILL");
-          log(
-            logger,
-            `Sent SIGKILL to Python subprocess with PID: ${pid}`,
-            logLevel.info
+          this.logger.info(
+            `Sent SIGKILL to Python subprocess with PID: ${pid}`
           );
         }
       }, 5000); // Wait 5 seconds before sending SIGKILL
     } catch (ex) {
-      log(
-        logger,
-        `Failed to kill process with PID: ${pid} - ${ex}`,
-        logLevel.error
-      );
+      this.logger.error(`Failed to kill process with PID: ${pid} - ${ex}`);
     }
 
     this.subProcess = null; // Clear the subprocess reference
