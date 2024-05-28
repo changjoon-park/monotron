@@ -30,7 +30,8 @@ async function checkServerReady({
       const message = await handleResponse(response, logger, logLevel);
       return message;
     } catch (error) {
-      log(logger, error.message, logLevel.warn);
+      const message = `Fail to connect to ${url}: ${error.message}`;
+      log(logger, message, logLevel.warn);
       if (retryCount > 0) {
         await new Promise((resolve) => setTimeout(resolve, timeout));
         return attemptConnection(retryCount - 1);

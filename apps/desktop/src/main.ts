@@ -3,7 +3,7 @@ import path from "path";
 
 import Logger from "@electron-python/logger";
 import checkServerReady from "@electron-python/check-server";
-import PythonSubprocessManager from "@electron-python/subprocess-manager";
+import PythonSubprocess from "@electron-python/subprocess-manager";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -14,7 +14,7 @@ const logger = new Logger({
   app: app,
 });
 
-const pythonManager = new PythonSubprocessManager({
+const pythonManager = new PythonSubprocess({
   app: app,
   logger: logger,
   moduleName: "run_app",

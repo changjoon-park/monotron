@@ -1,7 +1,7 @@
 const { spawn } = require("child_process");
 const path = require("path");
 
-class PythonSubprocessManager {
+class PythonSubprocess {
   constructor({
     app, // Electron app instance
     logger = null, // Logger instance
@@ -103,4 +103,4 @@ class PythonSubprocessManager {
   }
 }
 
-module.exports = PythonSubprocessManager;
+module.exports = PythonSubprocess;
