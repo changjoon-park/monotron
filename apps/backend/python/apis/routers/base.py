@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from src import main
-from backend.models import base
+from apis.models import base
 
 # Create a router
 router = APIRouter(
@@ -13,7 +13,7 @@ router = APIRouter(
 
 
 @router.get("/", response_class=JSONResponse)
-async def check_connection():
+async def root():
     message = main.check_connection()
     data = base.ConnectionStatus(**message)
 

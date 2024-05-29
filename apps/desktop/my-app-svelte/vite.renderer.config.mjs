@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { pluginExposeRenderer } from "./vite.base.config.mjs";
 import { svelte, vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { purgeCss } from "vite-plugin-tailwind-purgecss";
+import "dotenv/config";
 
 // https://vitejs.dev/config
 export default defineConfig((env) => {
@@ -25,6 +26,9 @@ export default defineConfig((env) => {
       purgeCss(),
       pluginExposeRenderer(name),
     ],
+    define: {
+      "process.env": process.env,
+    },
     css: {
       postcss: "./postcss.config.cjs",
     },
