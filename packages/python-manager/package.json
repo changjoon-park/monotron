@@ -1,6 +1,6 @@
 {
-  "name": "@electron-python/subprocess-manager",
-  "version": "1.5.6",
+  "name": "@monotron/python-manager",
+  "version": "1.0.1",
   "description": "",
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/changjoon-park/electron-python.git"
+    "url": "git+https://github.com/changjoon-park/monotron.git"
   },
   "license": "ISC",
   "dependencies": {
-    "@electron-python/logger": "^1.2.4"
+    "@monotron/logger": "^1.0.1"
   }
 }

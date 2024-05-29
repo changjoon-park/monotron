@@ -28,7 +28,7 @@ def create_app() -> FastAPI:
 
     # Create the FastAPI application
     app = FastAPI(
-        title="electron-python",
+        title="monotron",
         description="",
         lifespan=lifespan,
     )

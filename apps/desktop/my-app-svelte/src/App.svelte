@@ -1,8 +1,7 @@
 <script>
   import { onMount } from "svelte";
-  import axios from 'axios';
-  import axiosRetry from 'axios-retry';
-  import dotenv from 'dotenv';
+  import axios from "axios";
+  import axiosRetry from "axios-retry";
 
   import svelteLogo from "./assets/svelte.svg";
   import fastapiLogo from "./assets/fastapi.svg";
@@ -16,6 +15,10 @@
   // Define the base URL for the API from python backend
   const API_BASE_URL = process.env.VITE_API_BASE_URL;
 
+  if (!API_BASE_URL) {
+    console.error("API_BASE_URL is not defined in .env file");
+  }
+
   // Retry failed requests up to 10 times with exponential backoff
   axiosRetry(axios, { retries: 10, retryDelay: axiosRetry.exponentialDelay });
 
@@ -24,7 +27,9 @@
       const response = await axios.get(API_BASE_URL);
       const data = response.data;
       console.log(data); // Log the response to check its structure
-      fetchedData = `${data.status} (http://${data.ip}:${data.port}/${data.path})` || "No message found"; // Access nested message property
+      fetchedData =
+        `${data.status} (http://${data.ip}:${data.port}/${data.path})` ||
+        "No message found"; // Access nested message property
     } catch (error) {
       fetchedData = "Failed to load data.";
       console.error("Error fetching data:", error);
@@ -32,9 +37,7 @@
   });
 </script>
 
-<main
-  class="flex flex-col items-center justify-center min-h-screen "
->
+<main class="flex flex-col items-center justify-center min-h-screen">
   <div class="flex justify-center space-x-20 mb-8">
     <Logo {logos} />
   </div>

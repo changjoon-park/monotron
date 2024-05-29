@@ -1,3 +1,3 @@
-# electron-python
+# monotron
 
-Electron project for python 
+Monorepo for electron apps

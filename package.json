@@ -1,9 +1,9 @@
 {
-  "name": "electron-python-monorepo",
-  "version": "1.1.0",
+  "name": "@monotron/monotron",
+  "version": "1.0.0",
   "description": "",
   "scripts": {
-    "venv": "pnpm --filter='python' create:venv && echo 'Run `source ./apps/python/.venv/bin/activate` to activate the virtual environment.'",
+    "venv": "pnpm --filter='python' create:venv && echo 'Run `source ./apps/backend/python/.venv/bin/activate` to activate the virtual environment.'",
     "install:all": "pnpm install && pnpm --filter='*desktop*' install:all && pnpm --filter='python' install:python",
     "start:python": "pnpm --filter='python' start",
     "start:desktop-1": "pnpm --filter='my-desktop-app' start",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/changjoon-park/electron-python.git"
+    "url": "git+https://github.com/changjoon-park/monotron.git"
   },
   "license": "ISC",
   "devDependencies": {

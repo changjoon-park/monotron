@@ -14,8 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "paths": {
-      "@electron-python/subprocess-manager": [
-        "./node_modules/@electron-python/subprocess-manager/types/index.d.ts"
+      "@monotron/python-manager": [
+        "./node_modules/@monotron/python-manager/types/index.d.ts"
       ]
     }
   }

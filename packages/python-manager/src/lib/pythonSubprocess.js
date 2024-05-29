@@ -2,7 +2,7 @@ const { spawn } = require("child_process");
 const path = require("path");
 const http = require("http");
 
-const Logger = require("@electron-python/logger");
+const Logger = require("@monotron/logger");
 
 class PythonSubprocess {
   constructor({

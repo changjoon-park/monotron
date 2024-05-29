@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build output
+**/dist/
+**/build/
+**/out/
+
+# Test files
+test/
+tests/
+*.test.js
+
+# Documentation
+docs/
+
+# Configuration files
+.env
+**/.env
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+*.tmp
+
+# OS and IDE-specific files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

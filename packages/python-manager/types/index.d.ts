@@ -1,6 +1,6 @@
-declare module "@electron-python/subprocess-manager" {
+declare module "@monotron/python-manager" {
   import { App } from "electron";
-  import { Logger } from "@electron-python/logger";
+  import { Logger } from "@monotron/logger";
 
   interface PythonSubprocessOptions {
     app: App;

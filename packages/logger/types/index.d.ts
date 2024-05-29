@@ -1,4 +1,4 @@
-declare module "@electron-python/logger" {
+declare module "@monotron/logger" {
   import { App } from "electron";
 
   interface LoggerOptions {

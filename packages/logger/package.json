@@ -1,6 +1,6 @@
 {
-  "name": "@electron-python/logger",
-  "version": "1.2.4",
+  "name": "@monotron/logger",
+  "version": "1.0.1",
   "description": "",
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/changjoon-park/electron-python.git"
+    "url": "git+https://github.com/changjoon-park/monotron.git"
   },
   "license": "ISC",
   "dependencies": {
