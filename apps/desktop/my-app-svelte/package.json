@@ -1,6 +1,6 @@
 {
-  "name": "my-electron-app",
-  "productName": "my-electron-app",
+  "name": "my-app-svelte",
+  "productName": "my-app-svelte",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
@@ -22,8 +22,15 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/plugin-vite": "^7.4.0",
     "@electron/fuses": "^1.8.0",
+    "@skeletonlabs/skeleton": "^2.10.0",
+    "@skeletonlabs/tw-plugin": "^0.4.0",
+    "@sveltejs/vite-plugin-svelte": "^3.1.0",
+    "autoprefixer": "^10.4.19",
     "electron": "30.0.8",
-    "vite": "^5.2.12"
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.2.12",
+    "vite-plugin-tailwind-purgecss": "^0.3.3"
   },
   "keywords": [
     "electron",

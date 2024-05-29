@@ -30,7 +30,7 @@
 </script>
 
 <main
-  class="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-white"
+  class="flex flex-col items-center justify-center min-h-screen "
 >
   <div class="flex justify-center space-x-20 mb-8">
     <Logo {logos} />
