@@ -1,6 +1,6 @@
 {
-  "name": "my-app-svelte",
-  "productName": "my-app-svelte",
+  "name": "my-desktop-app-svelte",
+  "productName": "my-desktop-app-svelte",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
@@ -47,6 +47,8 @@
   "license": "MIT",
   "dependencies": {
     "@electron-python/subprocess-manager": "^1.5.6",
+    "axios": "^1.7.2",
+    "axios-retry": "^4.3.0",
     "electron-squirrel-startup": "^1.0.1"
   }
 }

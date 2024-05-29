@@ -5,23 +5,24 @@
   import electronLogo from "./assets/electron.svg";
   import Counter from "./lib/Counter.svelte";
   import Logo from "./lib/Logo.svelte";
+  import axios from 'axios';
+  import axiosRetry from 'axios-retry';
 
-  let fetchedData = "";
+  let fetchedData = "Fetching data...";
   let logos = { svelteLogo, fastapiLogo, electronLogo };
 
+  // Define the base URL for the API from python backend
   const API_BASE_URL = "http://localhost:4040/api/";
+
+  // Retry failed requests up to 10 times with exponential backoff
+  axiosRetry(axios, { retries: 10, retryDelay: axiosRetry.exponentialDelay });
 
   onMount(async () => {
     try {
-      const response = await fetch(API_BASE_URL);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
+      const response = await axios.get(API_BASE_URL);
+      const data = response.data;
       console.log(data); // Log the response to check its structure
-      fetchedData =
-        `${data.status} (${data.ip}:${data.port}/${data.path})` ||
-        "No message found"; // Access nested message property
+      fetchedData = `${data.status} (${data.ip}:${data.port}/${data.path})` || "No message found"; // Access nested message property
     } catch (error) {
       fetchedData = "Failed to load data.";
       console.error("Error fetching data:", error);

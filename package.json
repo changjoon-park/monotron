@@ -4,11 +4,16 @@
   "description": "",
   "scripts": {
     "venv": "pnpm --filter='python' create:venv && echo 'Run `source ./apps/python/.venv/bin/activate` to activate the virtual environment.'",
-    "install:all": "pnpm install && pnpm --filter='*electron*' install:all && pnpm --filter='python' install:python",
+    "install:all": "pnpm install && pnpm --filter='*desktop*' install:all && pnpm --filter='python' install:python",
     "start:python": "pnpm --filter='python' start",
-    "start:electron": "pnpm --filter='*svelte*' start",
-    "start": "concurrently -k \"npm run start:python\" \"npm run start:electron\"",
-    "build": "pnpm --filter='python' bundle:python && pnpm --filter='*svelte*' package"
+    "start:desktop-1": "pnpm --filter='my-desktop-app' start",
+    "start:desktop-2": "pnpm --filter='my-desktop-app-ts' start",
+    "start:desktop-3": "pnpm --filter='my-desktop-app-svelte' start",
+    "start": "concurrently -k \"npm run start:python\" \"npm run start:desktop-3\"",
+    "build:desktop-1": "pnpm --filter='my-desktop-app' package",
+    "build:desktop-2": "pnpm --filter='my-desktop-app-ts' package",
+    "build:desktop-3": "pnpm --filter='my-desktop-app-svelte' package",
+    "build": "pnpm --filter='python' bundle:python && pnpm run build:desktop-3"
   },
   "keywords": [
     "electron",
