@@ -4,10 +4,12 @@
   import fastapiLogo from "./assets/fastapi.svg";
   import electronLogo from "./assets/electron.svg";
   import Counter from "./lib/Counter.svelte";
+  import Logo from "./lib/Logo.svelte";
 
   let fetchedData = "";
+  let logos = { svelteLogo, fastapiLogo, electronLogo };
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_BASE_URL = "http://localhost:4040/api/";
 
   onMount(async () => {
     try {
@@ -31,31 +33,11 @@
   class="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-white"
 >
   <div class="flex justify-center space-x-20 mb-8">
-    <a href="https://www.electronjs.org/" target="_blank" rel="noreferrer">
-      <img
-        src={electronLogo}
-        class="h-24 transition-transform duration-300 hover:drop-shadow-[0_0_2em_#646cffaa]"
-        alt="Electron Logo"
-      />
-    </a>
-    <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noreferrer">
-      <img
-        src={fastapiLogo}
-        class="h-24 transition-transform duration-300 hover:drop-shadow-[0_0_2em_#43a6c7aa]"
-        alt="FastAPI Logo"
-      />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img
-        src={svelteLogo}
-        class="h-24 transition-transform duration-300 hover:drop-shadow-[0_0_2em_#ff3e00aa]"
-        alt="Svelte Logo"
-      />
-    </a>
+    <Logo {logos} />
   </div>
   <h1 class="text-5xl font-bold my-4">Electron + FastAPI + Svelte</h1>
 
-  <div class="card bg-gray-700 p-4 my-4 rounded-lg shadow-lg">
+  <div class="cardp-4 my-4">
     <Counter />
   </div>
 
