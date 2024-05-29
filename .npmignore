@@ -1,6 +1,8 @@
-# Node modules
+# Installed
 node_modules/
 **/node_modules/
+.venv
+**/.venv
 
 # Build output
 **/dist/
