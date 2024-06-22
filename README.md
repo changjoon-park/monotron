@@ -1,3 +1,3 @@
 # monotron
 
-Monorepo for electron apps
+Monorepo for electron apps combined with Python
