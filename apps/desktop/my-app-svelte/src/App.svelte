@@ -16,7 +16,9 @@
   const API_BASE_URL = process.env.VITE_API_BASE_URL;
 
   if (!API_BASE_URL) {
-    console.error("API_BASE_URL is not defined in .env file");
+    console.error("VITE_API_BASE_URL is not defined in .env file");
+    console.error("Please define the API base URL in .env file");
+    console.error("Refer to the README.md for more information");
   }
 
   // Retry failed requests up to 10 times with exponential backoff
